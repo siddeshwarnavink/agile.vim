@@ -8,7 +8,8 @@ endif
 
 set path=**
 set wildmenu
-set wildignore+=*.o,*.d,*.so,*.a,*.elf,*.bin,*.out,*.map,*.gcda,*.gcno,*.s,*.i,*.lst,*.bak,*.swp,*.tmp,*~
+set wildignore+="*.o,*.d,*.so,*.a,*.elf,*.bin,*.out,*.map,*.gcda,*.gcno,*.s
+set wildignore+=*.i,*.lst,*.bak,*.swp,*.tmp,*~"
 set wildoptions=pum
 
 function! s:GitFilesFind(A, L, P) abort
@@ -22,10 +23,12 @@ function! s:GitFilesFind(A, L, P) abort
     endif
 endfunction
 
-command! -nargs=1 -complete=customlist,s:GitFilesFind GFind execute "find" <q-args>
-command! -nargs=1 -complete=customlist,s:GitFilesFind Gf execute "find" <q-args>
+command! -nargs=1 -complete=customlist,s:GitFilesFind GFind execute "find"
+            \<q-args>
+command! -nargs=1 -complete=customlist,s:GitFilesFind Gf execute "find" 
+            \<q-args>
 
 if g:betterfind_map_keys
-    nnoremap <leader>ff :find<space>
-    nnoremap <leader>fg :GFind<space>
+    nnoremap ff :find<space>
+    nnoremap fg :GFind<space>
 endif
