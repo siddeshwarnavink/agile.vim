@@ -22,3 +22,5 @@ them by using `let g:betterfind_map_keys = 0`
 ff                     Find files in directory. 
                                                 *betterfind-fg*
 fg                     Find files in git repository.
+
+ vim:tw=78:ts=8:ft=help:norl:

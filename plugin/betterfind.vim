@@ -14,9 +14,10 @@ set wildoptions=pum
 
 function! s:GitFilesFind(A, L, P) abort
     if system("git rev-parse --is-inside-work-tree") =~? "^true"
-        let l:files = split(system("git ls-files"), "\n")
-        let l:filtered = filter(l:files, "v:val =~ a:A")
-        return l:filtered
+        let l:filepaths = split(system("git ls-files \"*" . a:A . "*\""), "\n")
+        let l:files = map(l:filepaths, {x, val -> split(val, "/")[-1]})
+
+        return l:files 
     else
         echoerr "Not inside a Git repository"
         return []
