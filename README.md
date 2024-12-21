@@ -1,23 +1,24 @@
-# betterfind.vim
+# agile.vim
 
-A very simple plugin that makes Vim's default find command into a simple fuzzy
-finder.
+Quickly navigate through code in Vim. Specifically made for working 
+in remote environments.
 
-* Just use `:find` and hit tab to get auto complete. Use `Ctrl-P` and `Ctrl-N`
-  to go up and down the list.
-* Use `:GFind` or simply `:Gf` to fuzzy find files in your get repository.
+* Improves netrw experience. Use `-` to go up a directory.
+* `:LastEdit` to go to the where you last edited a file.
+* Use built-in `:find` and hit tab to get auto complete. Use `Ctrl-P` and 
+  `Ctrl-N` to go up and down the list.
+* `:Gfind` to fuzzy find files in your get repository.
+* `:Grep` (with optional ripgrep support).
 
 ## Installation
 
-Install using your favourite package manager, here is instruction to install 
-with [Plug](https://github.com/junegunn/vim-plug)
+For remote environments, install using Vim's default package manager
 
-    Plug 'siddeshwarnavink/betterfind.vim'
+    mkdir -p ~/.vim/pack/plugins/start
+    cd ~/.vim/pack/plugins/start
+    git clone https://github.com/siddeshwarnavink/agile.vim.git
 
-## Keybinding
+Or if you on a local machine, install using your favorite package manager, here
+is instruction to install with [Plug](https://github.com/junegunn/vim-plug)
 
-betterfind.vim comes with default keybindings, though you can easily disable 
-them by using `let g:betterfind_map_keys = 0`
-
-* `ff` - Find files in directory.
-* `fg` - Find files in git repository.
+    Plug 'siddeshwarnavink/agile.vim'

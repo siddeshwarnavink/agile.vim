@@ -1,0 +1,95 @@
+*agile.txt* *agile* Quickly navigate through code
+
+Author:      Siddeshwar <siddeshwar.work@gmail.com>
+Repository:  https://github.com/siddeshwarnavink/agile.vim
+Version:     0.1.0
+
+FEATURES
+
+* Improves netrw experience. Use `-` to go up a directory.
+* `:LastEdit` to go to the where you last edited a file.
+* Use built-in `:find` and hit tab to get auto complete. Use `Ctrl-P` and 
+  `Ctrl-N` to go up and down the list.
+* `:Gfind` to fuzzy find files in your git repository.
+* `:Grep` (with optional ripgrep support).
+
+INSTALLATION
+
+For remote environments, install using Vim's default package manager
+>
+    mkdir -p ~/.vim/pack/plugins/start
+    cd ~/.vim/pack/plugins/start
+    git clone https://github.com/siddeshwarnavink/agile.vim.git
+<
+Or if you on a local machine, install using your favorite package manager, here
+is instruction to install with https://github.com/junegunn/vim-plug
+>
+    Plug 'siddeshwarnavink/agile.vim'
+<
+PLACEHOLDERS
+
+These are the default placeholders that can be used in the templates.
+
+ Name          Description ~
+ AUTHOR        Author of the file
+ AUTHOR_EMAIL  Email of the author
+ FILE          Name of the file without extension
+ FILEE         Name of the file with extension
+ FILEP         Path of the file
+ FILED         Directory of the file
+ DATE          Current date
+ TIME          Current time
+
+
+ADVANCE USECASE
+
+== Custom placeholders
+
+You can also add custom placeholders by adding the following to your `.vimrc`.
+>
+    let g:barebones_placeholders = {
+      \ 'FILE_CAP': "toupper(expand('%:t:r'))",
+      \ 'FOO': "'BAR'"
+      \ }<
+
+== Barebones for specific file extensions
+
+You can also define templates for specific file extensions by creating
+`ext.template` files in the `g:templates_path` directory.
+
+This is espcailly useful with you want to have different templates for
+cpp and header files as both have the same filetype. For example,
+>
+    #ifndef {{FILE_CAP}}_H
+    #define {{FILE_CAP}}_H
+
+    // ...
+
+    #endif
+<
+It will first look for the `ext.template` file and then for the
+`filetype.template`
+
+CONFIGURATION
+
+These are the default configuration options that can be set in your `.vimrc`.
+
+Name                      Default            Description ~
+g:barebones_autoload      1                  Load templates on empty buffer
+g:barebones_path          ~/.vim/barebones/  Barebones directory
+g:barebones_author        ''                 Author of the file
+g:barebones_author_email  ''                 Email of the author
+g:barebones_placeholders  {}                 Custom placeholders
+
+COMMANDS
+
+These are the commands that can be used with the plugin.
+
+:Barbone
+    Load the template for the current buffer.
+
+:Ebarebone `filetype
+    Edit the template for givne filetype.
+
+
+vim:tw=78:ts=8:ft=help:norl:
